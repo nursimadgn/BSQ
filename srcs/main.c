@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 	{
 		// Standart inputtan (stdin) okuma fonksiyonu çağrılmalı
 		// Örn: process_stdin();
+		process_file("STDIN",0);
 		return (0);
 	}
 	i = 1;
