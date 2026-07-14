@@ -1,9 +1,3 @@
-/*
-** EPITECH PROJECT, 2026
-** bsq
-** File description:
-** Square solver implementation
-*/
 
 #include "bsq.h"
 
@@ -46,11 +40,10 @@ void	find_biggest(t_map *map, int **dp, t_square *best)
 			else if (i == 0 || j == 0)
 				dp[i][j] = 1;
 			else
-				dp[i][j] = get_min(dp[i - 1][j], dp[i][j - 1],
-					dp[i - 1][j - 1]) + 1;
+				dp[i][j] = get_min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
 			update_best(dp, best, i, j);
 		}
-	}
+	} 
 }
 
 void	draw_square(t_map *map, t_square best)

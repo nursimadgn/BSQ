@@ -34,7 +34,7 @@ void	ft_putstr(char *str);
 void	ft_puterror(void);
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-t_map	*parse_map(char *filepath);
+t_map    *parse_map(int fd);
 void	free_map(t_map *map);
 void	solve_bsq(t_map *map);
 

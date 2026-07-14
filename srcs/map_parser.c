@@ -1,9 +1,3 @@
-/*
-** EPITECH PROJECT, 2026
-** bsq
-** File description:
-** Map parsing and memory management helpers
-**/
 
 #include "bsq.h"
 
@@ -27,7 +21,7 @@ int	read_line(int fd, char *line, int size)
 
 int	fill_row(int fd, t_map *map, int index)
 {
-	char	line[1000];
+	char	line[100000];
 	int		len;
 	int		j;
 
@@ -90,27 +84,22 @@ int	parse_header(int fd, t_map *map)
 		&& map->empty != map->full && map->obstacle != map->full);
 }
 
-t_map	*parse_map(char *filepath)
+t_map	*parse_map(int fd)
 {
-	int		fd;
 	t_map	*map;
 
-	fd = open(filepath, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
 	map = malloc(sizeof(t_map));
-	if (!map || !parse_header(fd, map))
+	if (!map)
+		return (NULL);
+	if (!parse_header(fd, map))
 	{
-		close(fd);
 		free(map);
 		return (NULL);
 	}
 	if (!fill_grid(fd, map))
 	{
-		close(fd);
 		free_map(map);
 		return (NULL);
 	}
-	close(fd);
 	return (map);
 }

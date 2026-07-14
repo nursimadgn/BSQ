@@ -1,21 +1,4 @@
-/*
-** EPITECH PROJECT, 2026
-** bsq
-** File description:
-** Additional utility helpers
-*/
-
 #include "bsq.h"
-
-int	ft_is_empty(char c)
-{
-	return (c == '.');
-}
-
-int	ft_is_obstacle(char c)
-{
-	return (c == 'o');
-}
 
 void	free_map(t_map *map)
 {
