@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2026
+** bsq
+** File description:
+** Main entry point for the BSQ program
+*/
+
 #include "bsq.h"
 
 void	print_grid(t_map *map)
@@ -35,11 +42,7 @@ int	main(int argc, char **argv)
 	int	i;
 
 	if (argc < 2)
-	{
-		// Standart inputtan (stdin) okuma fonksiyonu çağrılmalı
-		// Örn: process_stdin();
 		return (0);
-	}
 	i = 1;
 	while (i < argc)
 	{

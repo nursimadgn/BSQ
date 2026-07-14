@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2026
+** bsq
+** File description:
+** Header for the BSQ project
+*/
+
 #ifndef BSQ_H
 # define BSQ_H
 
@@ -22,18 +29,13 @@ typedef struct s_square
 	int	y;
 }	t_square;
 
-/* utils.c */
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_puterror(void);
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-
-/* map_parser.c */
 t_map	*parse_map(char *filepath);
 void	free_map(t_map *map);
-
-/* solver.c */
 void	solve_bsq(t_map *map);
 
 #endif

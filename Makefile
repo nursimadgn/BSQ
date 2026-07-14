@@ -7,7 +7,8 @@ SRCS_DIR = srcs
 SRCS = $(SRCS_DIR)/main.c \
        $(SRCS_DIR)/map_parser.c \
        $(SRCS_DIR)/solver.c \
-       $(SRCS_DIR)/utils.c
+       $(SRCS_DIR)/utils.c \
+       $(SRCS_DIR)/extra_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

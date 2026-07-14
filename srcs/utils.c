@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2026
+** bsq
+** File description:
+** Basic utility functions
+*/
+
 #include "bsq.h"
 
 void	ft_putchar(char c)
