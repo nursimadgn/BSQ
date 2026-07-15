@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		process_file(argv[i]);
-		if (i > 1)//makarayız dimi abi komediyiz dimi abi
-            ft_putchar('\n');
+		if (i > 1) // makarayız dimi abi komediyiz dimi abi
+			ft_putchar('\n');
 		i++;
 	}
 	return (0);
