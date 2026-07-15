@@ -32,8 +32,10 @@ int		ft_strlen(char *str);
 /* map_parser.c */
 t_map	*parse_map(char *filepath);
 void	free_map(t_map *map);
-
-/* solver.c */
+int	ft_strcmp(char *s1, char *s2);
 void	solve_bsq(t_map *map);
+int     read_loop(int fd, char *line, int size, int *ret);
+void    flush_line(int fd);
+int     validate_row(char *line, t_map *map, int index);
 
 #endif

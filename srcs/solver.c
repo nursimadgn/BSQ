@@ -1,23 +1,32 @@
 #include "bsq.h"
 
 // 3 sayının minimumunu bulan yardımcı fonksiyon
-int	get_min(int a, int b, int c)
+static int  get_min(int a, int b, int c)//min değer alıyor vay canına
 {
-	int	min;
+    int min;
 
-	min = a;
-	if (b < min)
-		min = b;
-	if (c < min)
-		min = c;
-	return (min);
+    min = a;
+    if (b < min)
+        min = b;
+    if (c < min)
+        min = c;
+    return (min);
 }
 
-// DP tablosunu güncelleyip en büyük kareyi kaydeden fonksiyon
+void	update_best(int **dp, t_square *best, int i, int j)
+{
+	if (dp[i][j] > best->size)
+	{
+		best->size = dp[i][j];
+		best->y = i;
+		best->x = j;
+	}
+}
+
 void	find_biggest(t_map *map, int **dp, t_square *best)
 {
-	int	i;
-	int	j;
+    int i;
+    int j;
 
 	i = -1;
 	while (++i < map->rows)
@@ -30,60 +39,53 @@ void	find_biggest(t_map *map, int **dp, t_square *best)
 			else if (i == 0 || j == 0)
 				dp[i][j] = 1;
 			else
-				dp[i][j] = get_min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
-			if (dp[i][j] > best->size)
-			{
-				best->size = dp[i][j];
-				best->y = i;
-				best->x = j;
-			}
+				dp[i][j] = get_min(dp[i - 1][j], dp[i][j - 1],
+					dp[i - 1][j - 1]) + 1;
+			update_best(dp, best, i, j);
 		}
 	}
 }
 
-// En büyük karenin içini 'full' karakteri ile dolduran fonksiyon
 void	draw_square(t_map *map, t_square best)
 {
-	int	i;
-	int	j;
+    int i;
+    int j;
 
-	i = best.y - best.size + 1;
-	while (i <= best.y)
-	{
-		j = best.x - best.size + 1;
-		while (j <= best.x)
-		{
-			map->grid[i][j] = map->full;
-			j++;
-		}
-		i++;
-	}
+    i = best.y - best.size + 1;
+    while (i <= best.y)
+    {
+        j = best.x - best.size + 1;
+        while (j <= best.x)
+        {
+            map->grid[i][j] = map->full;
+            j++;
+        }
+        i++;
+    }
 }
 
-// Çözücü ana fonksiyon
 void	solve_bsq(t_map *map)
 {
-	int			**dp;
-	t_square	best;
-	int			i;
+    int         **dp;
+    t_square    best;
+    int         i;
 
 	best.size = 0;
 	best.x = 0;
 	best.y = 0;
-	
-	// DP matrisi için yer ayrılması (malloc)
 	dp = malloc(sizeof(int *) * map->rows);
+	if (!dp)
+		return ;
 	i = 0;
 	while (i < map->rows)
 	{
 		dp[i] = malloc(sizeof(int) * map->cols);
+		if (!dp[i])
+			return ;
 		i++;
 	}
-
 	find_biggest(map, dp, &best);
 	draw_square(map, best);
-
-	// DP matrisinin free edilmesi
 	i = 0;
 	while (i < map->rows)
 		free(dp[i++]);

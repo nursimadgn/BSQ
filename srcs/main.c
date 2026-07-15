@@ -13,7 +13,7 @@ void	print_grid(t_map *map)
 	}
 }
 
-void	process_file(char *filepath, int multi)
+void	process_file(char *filepath)
 {
 	t_map	*map;
 
@@ -25,8 +25,6 @@ void	process_file(char *filepath, int multi)
 	}
 	solve_bsq(map);
 	print_grid(map);
-	if (multi)
-		ft_putchar('\n');
 	free_map(map);
 }
 
@@ -36,15 +34,15 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		// Standart inputtan (stdin) okuma fonksiyonu çağrılmalı
-		// Örn: process_stdin();
-		process_file("STDIN",0);
+		process_file("STDIN");
 		return (0);
 	}
 	i = 1;
 	while (i < argc)
 	{
-		process_file(argv[i], (argc > 2 && i < argc - 1));
+		process_file(argv[i]);
+		if (i > 1)//makarayız dimi abi komediyiz dimi abi
+            ft_putchar('\n');
 		i++;
 	}
 	return (0);
