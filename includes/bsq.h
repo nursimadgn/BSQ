@@ -22,14 +22,11 @@ typedef struct s_square
 	int	y;
 }	t_square;
 
-/* utils.c */
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_puterror(void);
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-
-/* map_parser.c */
 t_map	*parse_map(char *filepath);
 void	free_map(t_map *map);
 int	ft_strcmp(char *s1, char *s2);
